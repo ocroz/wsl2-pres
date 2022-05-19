@@ -22,13 +22,13 @@ I am not affiliated with Microsoft,
 I am not selling anything,
 I am not a speaker or technical writer (at least on Internet).
 
-- I am used to share knowledge within my company<br/>
-- I am used to give presentations, training, and guidance about the tools and processes that I'm managing with my team<br/>
+- I am used to share knowledge within my company
+- I am used to give presentations, training, and guidance about the tools and processes that I'm managing with my team
 - Eventually, I am a developer who needs Linux on my Windows
 
 # Today I'm working at
 
-The Kudelski Group is a [technology pioneer](https://vimeo.com/305051552) since 1951 with the Nagra Audio.<br/>
+The Kudelski Group is a [technology pioneer](https://vimeo.com/305051552) since the first Nagra Audio in 1951.<br/>
 The [Kudelski Group](https://www.nagra.com/) has activities in Multiscreen and Digital TV*, Public Access, Cybersecurity, and Internet of Things.<br/>
 \*This is where I'm working :-).
 
@@ -176,7 +176,7 @@ There are solutions to workaround this problem, and few tools to implement them,
 
 In brief, `wsl2-boot` does the following at every Windows reboot:
 - It makes sure that all WSL network resources are deleted cleanly,
-- It creates the WSL network, and connect the Hyper-V VMs to it,
+- It creates the WSL network, and connects the Hyper-V VMs to it,
 - It fetches the DNS information from the current connected network, and starts WSL with this information,
 - It assigns a fixed IP to WSL, patches the DNS information, and optionally starts few services, like crond which can trigger other actions in background.
 
@@ -242,6 +242,8 @@ Hum... What if you use an IDE like `Eclipse` with a docker plugin that needs doc
 
 See now, the client is running on Windows architecture, and the server is running on a Linux architecture, your WSL2.
 
+Still need to manage docker the graphical way? Check the alternatives like [portainer](https://www.portainer.io/blog/portainer-your-docker-gui-for-your-ubuntu-linux-desktop).
+
 # Docker / Podman : Test our installation
 
 Let's start a docker or podman container on WSL2, and share the ssh socker with the container, so from within the container, you have access to the ssh keys which you loaded into Windows Pageant.
@@ -256,7 +258,7 @@ Then, let's take the example of `ansible` which fails in various situations:
 Now that you have docker on Linux, let's install `kubernetes` within docker, here with the example of [k3d](https://github.com/rancher/k3d#get), very easy to install.
 There is a [nice article talking about k3d](https://en.sokube.ch/post/k3s-k3d-k8s-a-new-perfect-match-for-dev-and-test-1). This article says nothing about WSL2, but you have a true Linux machine, so it applies to you as well.
 
-Another word, when you start a kubernetes cluster, it opens few ports like 8080 and 8443. For debug purpose, you may need to open an `insecure kubernetes dashboard` thanks to the command `kubectl proxy &` which opens another port 8001 at localhost. Well, thanks to `localhost forwarding`, you can access the kubernetes dashboard at `localhost:8001` from a browser on Windows side, and where you can authenticate too :-).
+Another word, when you start a kubernetes cluster, it opens few ports like 8080 and 8443. For debug purpose, you may need to open an `insecure kubernetes dashboard` thanks to the command `kubectl proxy &` which opens another port 8001 at localhost. Well, thanks to `localhost forwarding`, you can access the kubernetes dashboard at `localhost:8001` from a browser on Windows side, where you can authenticate too :-).
 
 # Remote display
 
@@ -270,7 +272,7 @@ This could be useful for browser testing/automation using `selenium` for example
 
 You all know the DevOps loop where we code, build, test, release, deploy, operate, monitor, then plan for new code changes.
 
-For more efficiency, people implement a Centralized CI/CD. To be even more efficient, it is wise to run the Centralized CI/CD locally too. Some people go even futher, and as soon as they saved their files, the Local CI/CD starts immediately.
+To support this, most people implement a Centralized CI/CD. For more efficiency, it is wise to run the Centralized CI/CD locally too. Some people go even futher, and as soon as they saved their files, the Local CI/CD starts immediately.
 
 For those who are using GitLab CI/CD, you can look at [gitlab-ci-local](https://github.com/firecow/gitlab-ci-local) to run the Centralized CI/CD locally without effort.
 
@@ -284,7 +286,7 @@ Nothing prevents you to change one of the components, without changing docker it
 
 # Sysbox : System containers
 
-Provided by `nestybox`, `sysbox` empowers containers to run software like `systemd`: You have a complete systemd in your container, so you can install `docker`, `kubernetes`, and any `legacy app`, `seamlessly` (no need to learn a different langage, deploy your container with same docker commands) and `securely` (your container is well isolated from the host, no need to share the docker socket to build a docker image).
+Provided by `nestybox`, `sysbox` empowers containers to run software like `systemd`: You have a complete systemd in your container, so you can install `docker`, `kubernetes`, and any `legacy app`, `seamlessly` (no need to learn a different language, deploy your container with same docker commands) and `securely` (your container is well isolated from the host, no need to share the docker socket to build a docker image).
 
 Unfortunately, `sysbox` fails to install on WSL2 as it relies on systemd. See the [issue on github](https://github.com/nestybox/sysbox/issues/32
 ), where `sysbox` clearly wants to support WSL2. Microsoft may come first and support `systemd`.
@@ -307,11 +309,11 @@ For me:
 - Having systemd support would be great.
 - Having Windows Pageant integrated within WSL2 like within GitBash would be better than a solution plus 2 workarounds.
 - Optional: Make WSL2 aware of all SSL certificates (public and private ones) saved into the Windows store could be nice.
-- Optional: Make WSL2 aware of all credentials saved into the Windows store could be nice (ex: for git clone using https).
+- Optional: Make WSL2 aware of all credentials saved into the Windows store could be nice (ex: if 'git clone' using https).
 - More options to limit the resources like the disk.io like in Hyper-V.
 - I'm looking forward Windows 11 which seems to come with a native X server named WSLg.
 
-For others (few relevant issues I collected):
+For others (few relevant [issues](https://github.com/microsoft/WSL/issues) I collected):
 - Several users ask for a better support of Windows 11.
 - A better support of mounts, like to access USB drive from WSL2.
 - Be able to authenticate to WSL2 using Windows credentials.
@@ -333,7 +335,7 @@ DevOps is not only technical:
 # Thanks, you
 
 You make it possible. Especially I would like to thanks:
-- [Matthieu](https://www.linkedin.com/in/robinmatthieu/), [Matteo](https://www.linkedin.com/in/mazzeri/), and DevOps days Geneva team
+- [Matthieu](https://www.linkedin.com/in/robinmatthieu/), [Matteo](https://www.linkedin.com/in/mazzeri/), and the DevOps days Geneva team
 - [Nicolas](https://www.linkedin.com/in/nicolaspangaud/), and hackathon team @Nagravision, where I could prepare this pres
 - [David](https://www.linkedin.com/in/dalvarezquiroga/), [Bishwa](https://www.linkedin.com/in/bishwa-shrestha-37852253/), and [Jorge](https://www.linkedin.com/in/jorgeacarrasco/), who helped me to build this pres
-- The DevOps community, like a family !!!
+- The DevOps community, where I feel confident to propose and share
